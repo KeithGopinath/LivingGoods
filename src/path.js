@@ -53,7 +53,7 @@ const routes = [
   },
   {
     path: '/popup',
-    name: 'Build Version',
+    name: 'Build',
     layout: '/admin',
     icon: 'pe-7s-phone',
     component: '',
