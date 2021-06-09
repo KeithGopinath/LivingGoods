@@ -47,6 +47,11 @@ const ViewDeviceTabs = [
     className: 'fa fa-info',
     tabHeader: 'Device Status',
   },
+  {
+    eventKey: 'DeviceValidity',
+    className: 'fa fa-calendar',
+    tabHeader: 'Device Validity',
+  },
 ];
 
 class DeviceView extends Component {

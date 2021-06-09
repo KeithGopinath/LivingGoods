@@ -6,6 +6,7 @@ import AuditLog from '../../containers/AuditLog';
 import OperationsLog from '../../containers/OperationsLog';
 import DeviceStatus from '../../containers/DeviceStatus';
 import LocationLog from '../../containers/LocationLog';
+import DeviceValidity from '../../containers/DeviceValidity';
 import Loader from '../Loader';
 import { removeUnderscore } from '../../utils/containerFunctions';
 
@@ -107,12 +108,14 @@ const CustomTable = ({ info, ViewDeviceTabs, applicationList, deviceId, deviceSt
             <Tab.Pane eventKey="DeviceStatus" mountOnEnter unmountOnExit >
               <DeviceStatus mdmDeviceStatus={deviceStatus} deviceId={deviceId} />
             </Tab.Pane>
-
             <Tab.Pane eventKey="Location" mountOnEnter unmountOnExit >
               <LocationLog deviceId={deviceId} />
             </Tab.Pane>
             <Tab.Pane eventKey="AuditLog" mountOnEnter unmountOnExit >
               <AuditLog deviceId={deviceId} />
+            </Tab.Pane>
+            <Tab.Pane eventKey="DeviceValidity" mountOnEnter unmountOnExit >
+              <DeviceValidity deviceId={deviceId} />
             </Tab.Pane>
           </Tab.Content>
         </Col>
