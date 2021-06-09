@@ -1,0 +1,18 @@
+#clearicon{
+    cursor: pointer;
+    position: relative;
+    right: 115px;
+    top: 10px;
+}
+
+.activeUser{
+    color:green;
+}
+
+.archiveUser{
+    color: red;
+}
+
+.disabledButton{
+    color: rgb(179, 169, 169);
+}

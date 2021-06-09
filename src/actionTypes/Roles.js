@@ -1,0 +1,3 @@
+export const ROLES_REQUEST = 'ROLES_REQUEST';
+export const ROLES_SUCCESS = 'ROLES_SUCCESS';
+export const ROLES_FAILURE = 'ROLES_FAILURE';

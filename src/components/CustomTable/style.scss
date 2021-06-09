@@ -1,0 +1,31 @@
+.custom-table {
+    .-pagination .-center {
+        display: inline;
+        white-space: nowrap;
+    }
+
+    .rt-td {
+        margin: auto;
+    }
+}
+
+#tabs-with-dropdown {
+    min-height: 85vh;
+}
+
+.table-response {
+    word-break: break-word;
+}
+
+.table-width {
+    width: 50%;
+}
+
+.Device-info {
+    .rt-td {
+        flex: 100 0 auto !important;
+        width: 100px !important;
+        white-space: pre-wrap !important;
+        word-break: break-all !important;
+    }
+}

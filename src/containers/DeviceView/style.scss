@@ -1,0 +1,79 @@
+#tabs-with-dropdown-tab-AuditLog,
+#tabs-with-dropdown-tab-ApplicationsTab,
+#tabs-with-dropdown-tab-OperationsLog,
+#tabs-with-dropdown-tab-Location,
+#tabs-with-dropdown-tab-DeviceInformation,
+#tabs-with-dropdown-tab-DeviceStatus {
+    color: black;
+}
+
+.icons {
+    cursor: pointer;
+
+    &.table {
+        background: #005084;
+        color: white;
+        text-align: center;
+        cursor:initial;
+
+        i {
+            margin-right: 8px
+        }
+    }
+}
+
+.actions-table {
+    padding: 0 40px;
+    text-align: center;
+    align-items: center;
+    table-layout: fixed;
+
+    tbody>tr>td {
+        border-top: revert
+    }
+}
+
+.emptyBack {
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+    display: inline-block;
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.deviceCard {
+    background: #f9f9f9;
+    padding: 20px 15px 30px;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+}
+
+.action-label {
+    font-size: 14px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: black;
+}
+
+.action-button{
+   border: none; 
+   text-align: center; 
+   padding: 0%;
+}
+
+.action-icon{
+    color: black;
+}
+
+.disabled-icon{
+    color: rgb(179, 169, 169);
+}
+
+.device-details{
+    word-wrap: break-word;
+}

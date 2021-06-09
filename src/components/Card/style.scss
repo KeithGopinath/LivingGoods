@@ -1,0 +1,618 @@
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin line-gradient($top-color, $bottom-color) {
+  background: $top-color;
+  background: -moz-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0%, $top-color),
+      color-stop(100%, $bottom-color));
+  background: -webkit-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+  background: -o-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+  background: -ms-linear-gradient(top, $top-color 0%, $bottom-color 100%);
+  background: linear-gradient(to bottom, $top-color 0%, $bottom-color 100%);
+  background-size: 150% 150%;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: #{alpha(opacity=$opacity-ie)};
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+// Mixin for generating new styles
+@mixin btn-styles($btn-color, $btn-states-color) {
+  border-color: $btn-color;
+  color: $btn-color;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:active:focus,
+  &:active:hover,
+  &.active:focus,
+  &.active:hover,
+  .open>&.dropdown-toggle {
+    background-color: $transparent-bg;
+    color: $btn-states-color;
+    border-color: $btn-states-color;
+  }
+
+  &.disabled,
+  &:disabled,
+  &[disabled],
+  fieldset[disabled] & {
+
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: $transparent-bg;
+      border-color: $btn-color;
+    }
+  }
+
+  &.btn-fill {
+    color: $white-color;
+    @include opacity(1);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open>&.dropdown-toggle {
+      color: $white-color;
+    }
+
+    .caret {
+      border-top-color: $white-color;
+    }
+  }
+
+  .caret {
+    border-top-color: $btn-color;
+  }
+}
+
+@mixin btn-size($padding-vertical, $padding-horizontal, $font-size, $border) {
+  font-size: $font-size;
+  border-radius: $border;
+  padding: $padding-vertical $padding-horizontal;
+
+  &.btn-round {
+    padding: $padding-vertical + 1 $padding-horizontal;
+  }
+
+  &.btn-simple {
+    padding: $padding-vertical + 2 $padding-horizontal;
+  }
+}
+
+.card {
+  border-radius: $border-radius-base;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(63, 63, 68, 0.1);
+  background-color: #ffffff;
+  margin-bottom: 30px;
+
+  .image {
+    width: 100%;
+    overflow: hidden;
+    height: 260px;
+    border-radius: $border-radius-base $border-radius-base 0 0;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .filter {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.68);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    @include opacity(0);
+
+    .btn {
+      @include vertical-align();
+    }
+  }
+
+  &:hover .filter {
+    @include opacity(1);
+  }
+
+  .btn-hover {
+    @include opacity(0);
+  }
+
+  &:hover .btn-hover {
+    @include opacity(1);
+  }
+
+  .map {
+    height: 280px;
+    border-radius: $border-radius-base;
+
+    &.map-big {
+      height: 420px;
+    }
+  }
+
+  .content {
+    padding: $padding-default-horizontal;
+
+    .table-responsive {
+      padding: $padding-default-horizontal;
+    }
+  }
+
+  .content-no-padding {
+    padding: 0;
+
+    .map {
+      margin-top: $padding-default-horizontal;
+      border-radius: 0;
+    }
+  }
+
+  .content-full-width {
+    padding: $padding-default-horizontal 0;
+  }
+
+  .header {
+    padding: $padding-default-horizontal $padding-default-horizontal 0px;
+    color: $black-color;
+    font-weight: $font-weight-light;
+    font-size: $font-size-h4;
+  }
+
+  .category,
+  .form-group>label {
+    font-size: $font-size-base;
+    font-weight: $font-weight-normal;
+    color: $default-color;
+    margin-bottom: 0px;
+
+    &.error {
+      text-transform: none;
+      color: $danger-color;
+    }
+
+    i {
+      font-size: $font-paragraph;
+    }
+  }
+
+  .form-group>label {
+    font-size: $font-size-small;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin: $none;
+    color: $black-color;
+    font-weight: $font-weight-light;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .description {
+    font-size: $font-size-base;
+    color: #333;
+  }
+
+  .footer {
+    padding: 0 $padding-default-horizontal $padding-default-vertical;
+    background-color: $transparent-bg;
+    line-height: 30px;
+
+    .form-group label {
+      margin-bottom: 0;
+    }
+
+    .legend {
+      padding: 5px 0;
+    }
+
+    hr {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .stats {
+    color: #a9a9a9;
+  }
+
+  .author {
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+  }
+
+  .author i {
+    font-size: $font-size-base;
+  }
+
+  h6 {
+    font-size: $font-size-small;
+    margin: 0;
+  }
+
+  &.card-separator:after {
+    height: 100%;
+    right: -15px;
+    top: 0;
+    width: 1px;
+    background-color: $medium-gray;
+    content: "";
+    position: absolute;
+  }
+
+  .ct-chart {
+    margin: 30px 0 30px;
+    height: 300px;
+  }
+
+  //custom properties for tables that are inside cards
+  .table {
+    margin-bottom: 0;
+
+    tbody .bs-checkbox input,
+    thead .bs-checkbox .th-inner {
+      padding-left: 15px;
+    }
+
+    tbody td:last-child,
+    thead th:last-child {
+      padding-right: 15px;
+    }
+
+    tbody td.bs-checkbox:first-child {
+      padding-left: 23px !important;
+    }
+  }
+
+  .alert {
+    border-radius: $border-radius-base;
+    position: relative;
+
+    &.alert-with-icon {
+      padding-left: 65px;
+    }
+  }
+
+  &.card-plain {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    .image {
+      border-radius: 4px;
+    }
+  }
+}
+
+.card-user {
+  .image {
+    height: 110px;
+  }
+
+  .image-plain {
+    height: 0;
+    margin-top: 110px;
+  }
+
+  .author {
+    text-align: center;
+    text-transform: none;
+    margin-top: -70px;
+  }
+
+  .avatar {
+    width: 124px;
+    height: 124px;
+    border: 5px solid #ffffff;
+    position: relative;
+    margin-bottom: 15px;
+
+    &.border-gray {
+      border-color: #eeeeee;
+    }
+  }
+
+  .title {
+    line-height: 24px;
+  }
+
+  .content {
+    min-height: 240px;
+  }
+}
+
+.card-user,
+.card-price {
+  .footer {
+    padding: 5px 15px 10px;
+  }
+
+  hr {
+    margin: 5px 15px;
+  }
+}
+
+.card-wizard {
+  border-radius: $border-radius-extreme;
+
+  .nav-pills {
+    margin-left: -$padding-default-horizontal;
+    margin-right: -$padding-default-horizontal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    >li {
+      >a {
+        text-align: center;
+        border: none;
+        background-color: $dark-gray;
+        color: $white-color;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+          background-color: $dark-gray;
+          outline: 0 !important;
+        }
+      }
+
+      &:first-child>a,
+      &:last-child>a {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .btn-finish {
+    display: none;
+  }
+
+  .header {
+    padding-top: ($padding-default-vertical + 15);
+    padding-bottom: ($padding-default-vertical);
+  }
+
+  .footer {
+    padding-bottom: ($padding-default-vertical + 5);
+  }
+}
+
+.card-calendar {
+  .content {
+    height: 40rem;
+  }
+
+  .footer {
+    height: 3rem;
+    position: relative;
+    bottom: 1.5em;
+  }
+}
+
+.card-stats {
+  .icon-big {
+    font-size: 3em;
+    min-height: 64px;
+
+    i {
+      font-weight: bold;
+      line-height: 59px;
+    }
+  }
+
+  .numbers {
+    font-size: 2em;
+    text-align: right;
+
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+}
+
+// Custom Button
+.btn {
+  border-width: $border-thin;
+  background-color: $transparent-bg;
+  font-weight: $font-weight-normal;
+
+  @include opacity(0.8);
+  padding: $padding-base-vertical $padding-base-horizontal;
+
+  @include btn-styles($default-color, $default-states-color);
+
+  &:hover,
+  &:focus {
+    @include opacity(1);
+    outline: 0 !important;
+  }
+
+  &:active,
+  &.active,
+  .open>&.dropdown-toggle {
+    @include box-shadow(none);
+    outline: 0 !important;
+  }
+
+  &.btn-icon {
+    padding: $padding-base-vertical;
+  }
+
+  .btn-label {
+    .fa {
+      width: 13px;
+    }
+  }
+
+  .fa {
+    width: 20px;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-primary {
+  @include btn-styles($primary-color, $primary-states-color);
+}
+
+.btn-success {
+  @include btn-styles($success-color, $success-states-color);
+}
+
+.btn-info {
+  @include btn-styles($info-color, $info-states-color);
+}
+
+.btn-warning {
+  @include btn-styles($warning-color, $warning-states-color);
+}
+
+.btn-danger {
+  @include btn-styles($danger-color, $danger-states-color);
+}
+
+.btn-neutral {
+  @include btn-styles($white-color, $white-color);
+
+  &:active,
+  &.active,
+  .open>&.dropdown-toggle {
+    background-color: $white-color;
+    color: $default-color;
+  }
+
+  &.btn-fill,
+  &.btn-fill:hover,
+  &.btn-fill:focus {
+    color: $default-color;
+  }
+
+  &.btn-fill:hover,
+  &.btn-fill:focus {
+    @include opacity(0.86);
+  }
+
+  &.btn-simple:active,
+  &.btn-simple.active {
+    background-color: transparent;
+  }
+}
+
+.btn {
+
+  &:disabled,
+  &[disabled],
+  &.disabled {
+    @include opacity(0.5);
+  }
+}
+
+.btn-round {
+  border-width: $border-thin;
+  border-radius: $btn-round-radius !important;
+  padding: $padding-round-vertical $padding-round-horizontal;
+
+  &.btn-icon {
+    padding: $padding-round-vertical;
+  }
+}
+
+.btn-simple {
+  border: $none;
+  font-size: $font-size-medium;
+  padding: $padding-base-vertical $padding-base-horizontal;
+
+  &.btn-icon {
+    padding: $padding-base-vertical;
+  }
+}
+
+.btn-lg {
+  @include btn-size($padding-large-vertical,
+    $padding-large-horizontal,
+    $font-size-large,
+    $border-radius-large);
+  font-weight: $font-weight-normal;
+}
+
+.btn-sm {
+  @include btn-size($padding-small-vertical,
+    $padding-small-horizontal,
+    $font-size-small,
+    $border-radius-small);
+}
+
+.btn-xs {
+  @include btn-size($padding-xs-vertical,
+    $padding-xs-horizontal,
+    $font-size-small,
+    $border-radius-small);
+}
+
+.btn-wd {
+  min-width: 140px;
+}
+
+.btn-group.select {
+  width: 100%;
+}
+
+.btn-group.select .btn {
+  text-align: left;
+}
+
+.btn-group.select .caret {
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  right: 8px;
+}
+
+.btn-group>.btn {
+  opacity: 1;
+
+  &:not(:first-child):not(.dropdown-toggle) {
+    border-left: none;
+  }
+}

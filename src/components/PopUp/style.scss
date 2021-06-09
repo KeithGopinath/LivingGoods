@@ -1,0 +1,54 @@
+.popup-button {
+    color: white !important;
+    background-color: #04385a;
+    width: 120px;
+}
+
+.popup-button:hover,
+.popup-button:focus,
+.popup-button:active,
+.popup-button.active,
+.open>.popup-button.dropdown-toggle {
+    background: #353535 !important;
+    color: #fff !important;
+}
+
+.pop-close {
+    float: right;
+    cursor: pointer;
+}
+
+.modaltitle {
+    text-align: center;
+    font-weight: bolder;
+    color: #04385a;
+
+    button {
+        float: right
+    }
+}
+
+.pop-footer {
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pop-header {
+    border-bottom: 0;
+}
+
+.alertfalse {
+    color: red;
+    position: relative;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+.alertsuccess {
+    color: green;
+    position: relative;
+    text-align: center;
+    white-space: pre-wrap;
+}

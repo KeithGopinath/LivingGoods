@@ -1,0 +1,22 @@
+#clearicon {
+    cursor: pointer;
+    position: relative;
+    right: 115px;
+    top: 10px;
+}
+
+.rt-resizable-header-content, .rt-td{
+    text-align: center !important;
+}
+
+.activeDevice{
+    color:green;
+}
+
+.archiveDevice{
+    color: red;
+}
+
+.disabledButton{
+    color: rgb(179, 169, 169);
+}
