@@ -1,24 +1,23 @@
-import * as USERS from '../actionTypes/UsersImport';
+import * as BUILD from '../actionTypes/BuildVersion';
 
-const initialState = {
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case USERS.USERS_IMPORT_REQUEST:
+    case BUILD.BUILD_VERSION_REQUEST:
       return {
         ...state,
         isLoading: true,
-        usersImport: false,
+        buildVersion: false,
         error: false,
       };
-    case USERS.USERS_IMPORT_SUCCESS:
+    case BUILD.BUILD_VERSION_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        usersImport: action.success,
+        buildVersion: action.success,
       };
-    case USERS.USERS_IMPORT_FAILURE:
+    case BUILD.BUILD_VERSION_FAILURE:
       return {
         ...state,
         isLoading: false,

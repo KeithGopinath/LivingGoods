@@ -35,6 +35,7 @@ import { devicesSearchWatchers } from './DeviceSearch';
 import { devicesIdWatchers } from './DevicesId'
 import { CountByLocationWatchers } from './CountByLocation'
 import { CountByModelWatchers } from './CountByModel'
+import { buildVersionWatchers } from './BuildVersion'
 
 
 export default function* rootWatchers() {
@@ -75,5 +76,6 @@ export default function* rootWatchers() {
     devicesIdWatchers(),
     CountByLocationWatchers(),
     CountByModelWatchers(),
+    buildVersionWatchers(),
   ];
 }
