@@ -97,7 +97,7 @@ const Login = (props) => {
                     content={
                       <div>
                         <FormGroup>
-                          <ControlLabel>Username</ControlLabel>
+                          <ControlLabel>User</ControlLabel>
                           <FormControl className={username === '' && errorAlert} placeholder="Enter Username" type="text"
                             onChange={userNamehandler} maxLength={30} value={username} />
                         </FormGroup>
