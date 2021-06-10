@@ -41,7 +41,7 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
     dispatch({ type: "DEVICE_STATUS_EDIT_REQUEST", payload: Payload })
   }
 
-  const deviceOptions = deviceStatus && deviceStatus.map(data => {
+  const deviceOptions = deviceStatus && deviceStatus.filter(val => val !== 'EXPIRED' && val !== 'IN_ACTIVE').map(data => {
     return {
       value: data,
       label: data,

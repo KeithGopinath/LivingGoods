@@ -51,8 +51,8 @@ const PopUp = ({
 
   // InputOne Validations based on different page
   const InputOneHandler = (e) => {
-    if (title.includes('Message') || title.includes('Build')) {
-      // Send message or Build version
+    if (title.includes('Message')) {
+      // Send message
       if (/^(?![\s-])[A-Za-z0-9_@./#&+-\s-]*$/.test(e.target.value)) {
         setInputOne(e.target.value);
       }
@@ -63,8 +63,8 @@ const PopUp = ({
 
   // InputTwo Validations based on different page
   const InputTwoHandler = (e) => {
-    if (title.includes('Message') || title.includes('Build')) {
-      // Send message or Build version
+    if (title.includes('Message')) {
+      // Send message
       if (/^(?![\s-])[A-Za-z0-9_@./#&+-\s-]*$/.test(e.target.value)) {
         setInputTwo(e.target.value);
       }
