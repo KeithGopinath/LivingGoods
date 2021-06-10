@@ -1,24 +1,24 @@
-import * as DEVICE from '../actionTypes/DeviceStatusEdit';
+import * as DEVICE from '../actionTypes/DeviceValidity';
 
 const initialState = {
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case DEVICE.DEVICE_STATUS_EDIT_REQUEST:
+    case DEVICE.DEVICE_VALIDITY_REQUEST:
       return {
         ...state,
         isLoading: true,
-        deviceStatusEdit: false,
+        deviceValidity: false,
         error: false,
       };
-    case DEVICE.DEVICE_STATUS_EDIT_SUCCESS:
+    case DEVICE.DEVICE_VALIDITY_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        deviceStatusEdit: action.success,
+        deviceValidity: action.success,
       };
-    case DEVICE.DEVICE_STATUS_EDIT_FAILURE:
+    case DEVICE.DEVICE_VALIDITY_FAILURE:
       return {
         ...state,
         isLoading: false,

@@ -32,10 +32,11 @@ import { usersSearchWatchers } from './UserSearch';
 import { OperationsLogWatchers } from './OperationsLog';
 import { usersImportWatchers } from './UsersImport';
 import { devicesSearchWatchers } from './DeviceSearch';
-import { devicesIdWatchers } from './DevicesId'
-import { CountByLocationWatchers } from './CountByLocation'
-import { CountByModelWatchers } from './CountByModel'
-import { buildVersionWatchers } from './BuildVersion'
+import { devicesIdWatchers } from './DevicesId';
+import { CountByLocationWatchers } from './CountByLocation';
+import { CountByModelWatchers } from './CountByModel';
+import { buildVersionWatchers } from './BuildVersion';
+import { deviceValidityWatchers } from './DeviceValidity';
 
 
 export default function* rootWatchers() {
@@ -77,5 +78,6 @@ export default function* rootWatchers() {
     CountByLocationWatchers(),
     CountByModelWatchers(),
     buildVersionWatchers(),
+    deviceValidityWatchers(),
   ];
 }
