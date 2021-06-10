@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { MDBTypography } from 'mdbreact';
 import { Grid, Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneVolume, faPhoneSlash, faPaperPlane, faLock, faInfoCircle, faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -46,6 +45,11 @@ const ViewDeviceTabs = [
     eventKey: 'DeviceStatus',
     className: 'fa fa-info',
     tabHeader: 'Device Status',
+  },
+  {
+    eventKey: 'DeviceValidity',
+    className: 'fa fa-calendar',
+    tabHeader: 'Device Validity',
   },
 ];
 
@@ -123,14 +127,15 @@ class DeviceView extends Component {
     const { devicesId, devicesIdLoading } = this.props.devicesId;
     const { login } = this.props.login;
     const { deviceInfo, applicationList, active } = devicesId;
-    const { mdmDeviceStatus, id } = enforceNull(this.props.location.state);
-    const info = this.props.location.state.deviceInfo;
-    const deviceId = this.props.location.state.id;
+
+    const deviceDetails = (Array.isArray(this.props.location.state) && this.props.location.state.length) ? enforceNull(this.props.location.state) : devicesId;
+    const { mdmDeviceStatus, id } = deviceDetails;
+    const deviceId = deviceDetails.id;
 
     // condition for checking disabled actions
     const superAdminFlag = login ? login.roleName : sessionStorage.rolename;
     const ActionDisable = active && superAdminFlag == 'SUPER_ADMIN' ? true : false;
-
+    
     // condition for location alert message
     const latitude = deviceInfo && deviceInfo.Latitude;
     const locationAlert = latitude === "Can not fetch" ? "Latitude and Longitude are not available right now" : null;
@@ -149,7 +154,7 @@ class DeviceView extends Component {
                   content={
                     <Grid fluid>
                       <Row>
-                        {info ? <Col lg={4} sm={5}>
+                         <Col lg={4} sm={5}>
                           <div className='deviceCard'>
                             <Row className='mb-3'>
                               <Col lg={3} sm={5}>
@@ -226,28 +231,12 @@ class DeviceView extends Component {
                               </Table>
                             </Row>
                           </div>
-                        </Col> : <Col sm={6} smOffset={3}>
-                          <div style={{ textAlign: 'center' }}>
-                            <i className="icon fa fa-info fa-5x" style={{
-                              color: '#ccc',
-                              marginTop: '100px'
-                            }}></i>
-                            <MDBTypography tag='h3'>
-                              <strong className='iblock'>Yet to fetch device information</strong><br />
-                              <small className="text-muted iblock mb-3">Please make sure this device {deviceInfo && deviceInfo.deviceName} is registered in WSO2</small> <br />
-                            </MDBTypography>
-                            <div className='justify-content-center'>
-                              <Button block variant='primary' className='btn-fill emptyBack' onClick={() => window.history.back()}>
-                                <span>Back to Devices</span>
-                              </Button>
-                            </div>
-                          </div>
-                        </Col>}
+                        </Col> 
                         <Col lg={8} sm={7}>
                           <Row className="settings-page">
                             <Col md={12} className="settings-link-enc">
-                              {info && <CustomTable deviceId={deviceId} deviceStatus={mdmDeviceStatus} applicationList={applicationList}
-                                info={deviceInfo} ViewDeviceTabs={ViewDeviceTabs} devicesIdLoading={devicesIdLoading} />}
+                                <CustomTable deviceId={deviceId} deviceStatus={mdmDeviceStatus} applicationList={applicationList}
+                                info={deviceInfo} ViewDeviceTabs={ViewDeviceTabs} devicesIdLoading={devicesIdLoading} />
                             </Col>
                           </Row>
                         </Col>

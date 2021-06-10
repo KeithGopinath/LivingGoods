@@ -29,6 +29,8 @@ export default {
     getDeviceStatusRequest: 'mdm/device-services/devices/status',
     getDevicesImportRequest: 'mdm/device-services/devices/upload',
     deviceSearchRequest: 'mdm/device-services/devicesearch/query/',
+    getBuildVersionRequest: 'mdm/device-services/apk',
+    getDeviceValidityRequest: 'mdm/device-services/devices/',
     // Settings
     getEmailTemplatesRequest: 'mdm/notification-services/emailtemplates',
     getEmailTemplatesEditRequest: 'mdm/notification-services/emailtemplates/',

@@ -34,6 +34,8 @@ import deviceSearch from './DeviceSearch';
 import deviceId from './DevicesId';
 import countByLocation from './CountByLocation';
 import countByModel from './CountByModel';
+import buildVersion from './BuildVersion';
+import deviceValidity from './DeviceValidity';
 
 
 const rootReducer = combineReducers({
@@ -72,6 +74,8 @@ const rootReducer = combineReducers({
   deviceIdState: deviceId,
   countByLocationState: countByLocation,
   countByModelState: countByModel,
+  buildVersionState: buildVersion,
+  deviceValidityState: deviceValidity,
 });
 
 export default rootReducer;

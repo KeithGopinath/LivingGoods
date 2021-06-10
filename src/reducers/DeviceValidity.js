@@ -1,24 +1,24 @@
-import * as USERS from '../actionTypes/UsersImport';
+import * as DEVICE from '../actionTypes/DeviceValidity';
 
 const initialState = {
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case USERS.USERS_IMPORT_REQUEST:
+    case DEVICE.DEVICE_VALIDITY_REQUEST:
       return {
         ...state,
         isLoading: true,
-        usersImport: false,
+        deviceValidity: false,
         error: false,
       };
-    case USERS.USERS_IMPORT_SUCCESS:
+    case DEVICE.DEVICE_VALIDITY_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        usersImport: action.success,
+        deviceValidity: action.success,
       };
-    case USERS.USERS_IMPORT_FAILURE:
+    case DEVICE.DEVICE_VALIDITY_FAILURE:
       return {
         ...state,
         isLoading: false,

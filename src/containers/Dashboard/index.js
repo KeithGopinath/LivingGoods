@@ -315,9 +315,6 @@ const Dashboard = () => {
                     dataSource={vendorPie}
                     resolveLabelOverlapping="shift"
                   >
-                    {/* <Tooltip
-                    enabled={true}
-                    /> */}
                     <Legend
                       orientation="horizontal"
                       itemTextPosition="right"

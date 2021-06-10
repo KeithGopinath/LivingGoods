@@ -9,6 +9,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        deviceStatusEdit: false,
+        error: false,
       };
     case DEVICE.DEVICE_STATUS_EDIT_SUCCESS:
       return {
