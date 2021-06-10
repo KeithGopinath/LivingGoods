@@ -135,7 +135,7 @@ class DeviceView extends Component {
     // condition for checking disabled actions
     const superAdminFlag = login ? login.roleName : sessionStorage.rolename;
     const ActionDisable = active && superAdminFlag == 'SUPER_ADMIN' ? true : false;
-    
+
     // condition for location alert message
     const latitude = deviceInfo && deviceInfo.Latitude;
     const locationAlert = latitude === "Can not fetch" ? "Latitude and Longitude are not available right now" : null;
@@ -154,7 +154,7 @@ class DeviceView extends Component {
                   content={
                     <Grid fluid>
                       <Row>
-                         <Col lg={4} sm={5}>
+                        <Col lg={4} sm={5}>
                           <div className='deviceCard'>
                             <Row className='mb-3'>
                               <Col lg={3} sm={5}>
@@ -174,8 +174,10 @@ class DeviceView extends Component {
                               <Table className="icons">
                                 <tbody>
                                   <tr>
-                                    <td><Battery percent={deviceInfo && deviceInfo.Battery_Level} size={30} color={'white'} showPercentLabel
-                                      labelPosition={'right'} labelColor={'white'} labelSize={'15px'} outlined /></td>
+                                    <td><i title="Battery Percentage">
+                                      <Battery percent={deviceInfo && deviceInfo.Battery_Level} size={30} color={'white'} showPercentLabel
+                                        labelPosition={'right'} labelColor={'white'} labelSize={'15px'} outlined />
+                                    </i></td>
                                     <td><i className="icon fa fa-database fa" title="OS Version"></i>
                                       <span>{deviceInfo && deviceInfo.Os_Version}</span></td>
                                     <td><i className="icon fa fa-usb fa" title="Available RAM Memory"></i>
@@ -231,11 +233,11 @@ class DeviceView extends Component {
                               </Table>
                             </Row>
                           </div>
-                        </Col> 
+                        </Col>
                         <Col lg={8} sm={7}>
                           <Row className="settings-page">
                             <Col md={12} className="settings-link-enc">
-                                <CustomTable deviceId={deviceId} deviceStatus={mdmDeviceStatus} applicationList={applicationList}
+                              <CustomTable deviceId={deviceId} deviceStatus={mdmDeviceStatus} applicationList={applicationList}
                                 info={deviceInfo} ViewDeviceTabs={ViewDeviceTabs} devicesIdLoading={devicesIdLoading} />
                             </Col>
                           </Row>
