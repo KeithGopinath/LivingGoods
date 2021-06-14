@@ -16,10 +16,11 @@ const DeviceValidity = ({ deviceId }) => {
   const deviceValidityError = useSelector((state) => state.deviceValidityState.error);
 
   useEffect(() => {
-    if (deviceValidity) {
+    if (!newDate) {
+      setAlertMsg("");
+    } else if (deviceValidity) {
       setAlertMsg(deviceValidity.message);
-    }
-    else if (deviceValidityError) {
+    } else if (deviceValidityError) {
       setAlertMsg(deviceValidityError.message);
     }
   }, [deviceValidity, deviceValidityError]);
@@ -57,11 +58,12 @@ const DeviceValidity = ({ deviceId }) => {
             format="DD-MM-YYYY"
             disabledDate={disabledDate}
             onChange={onDateChange}
+          // defaultValue={moment(dateString, 'YYYY-MM-DD')}
           />
         </Col>
-        <Col md={6} className="device-status-button" >
+        {newDate && <Col md={6} className="device-status-button" >
           <Button onClick={onSubmitDate} variant="primary" fill >Update</Button>
-        </Col>
+        </Col>}
       </Row>
       <Row>
         <Col md={6}>

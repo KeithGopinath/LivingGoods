@@ -126,7 +126,7 @@ class DeviceView extends Component {
     const { popup, title, button, icon, status, labelOne, labelTwo } = this.state;
     const { devicesId, devicesIdLoading } = this.props.devicesId;
     const { login } = this.props.login;
-    const { deviceInfo, applicationList, active } = devicesId;
+    const { deviceInfo, applicationList } = devicesId;
 
     const deviceDetails = (Array.isArray(this.props.location.state) && this.props.location.state.length) ? enforceNull(this.props.location.state) : devicesId;
     const { mdmDeviceStatus, id } = deviceDetails;
@@ -134,7 +134,7 @@ class DeviceView extends Component {
 
     // condition for checking disabled actions
     const superAdminFlag = login ? login.roleName : sessionStorage.rolename;
-    const ActionDisable = active && superAdminFlag == 'SUPER_ADMIN' ? true : false;
+    const ActionDisable = mdmDeviceStatus === 'IN_USE' && superAdminFlag === 'SUPER_ADMIN' ? true : false;
     
     // condition for location alert message
     const latitude = deviceInfo && deviceInfo.Latitude;
