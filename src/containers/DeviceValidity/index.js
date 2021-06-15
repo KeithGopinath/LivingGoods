@@ -69,8 +69,8 @@ const DeviceValidity = ({ deviceId, validUntilDate }) => {
         </Col>}
       </Row>
       <Row>
-        <Col md={6}>
-          <div className="update">
+        <Col md={6} className="update">
+          <div>
             <span className={alertClassName}>{alertMsg}</span>
           </div>
         </Col>

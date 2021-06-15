@@ -4,7 +4,11 @@
 }
 
 .update {
+    display: flex;
+    justify-content: center;
     text-align: center;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .status {
@@ -23,5 +27,6 @@
 }
 
 .device-status-button{
-    padding-left: 100px;
+   display: flex;
+   justify-content: center;
 }
