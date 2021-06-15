@@ -9,6 +9,7 @@ import { removeUnderscore, enforceUnderscore } from '../../utils/containerFuncti
 const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
   const [status, setStatus] = useState({ value: mdmDeviceStatus, label: mdmDeviceStatus });
   const [alertMsg, setAlertMsg] = useState("");
+  const [flag, setFlag] = useState(false);
   const deviceStatus = useSelector((state) => state.deviceStatusState.deviceStatus);
   const deviceStatusEdit = useSelector((state) => state.deviceStatusEditState.deviceStatusEdit);
   const deviceStatusEditError = useSelector((state) => state.deviceStatusEditState.error);
@@ -20,14 +21,10 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
   }, []);
 
   useEffect(() => {
-    setAlertMsg('')
-  }, [deviceStatus]);
-
-  useEffect(() => {
-    if (deviceStatusEdit) {
+    if (deviceStatusEdit && flag) {
       setAlertMsg(deviceStatusEdit.message);
     }
-    else if (deviceStatusEditError) {
+    else if (deviceStatusEditError && flag) {
       setAlertMsg(deviceStatusEditError.message);
     }
   }, [deviceStatusEdit, deviceStatusEditError]);
@@ -44,6 +41,7 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
       deviceId: deviceId
     }
     dispatch({ type: "DEVICE_STATUS_EDIT_REQUEST", payload: Payload })
+    setFlag(true)
   }
 
   const deviceOptions = deviceStatus && deviceStatus.filter(val => val !== 'EXPIRED' && val !== 'IN_ACTIVE').map(data => {
