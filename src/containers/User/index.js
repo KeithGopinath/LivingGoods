@@ -51,10 +51,10 @@ class User extends Component {
       password: null,
       confirmPassword: null,
       uuid: state.uuid === '--' ? '' : state.uuid,
-      roleId: removeUnderscore([ {
+      roleId: {
         value: state.roles.id,
-        label: state.roles.name,
-      }]),
+        label: state.roles.name
+      },
       countryId: {
         value: state.country.id,
         label: state.country.countryName,
@@ -379,7 +379,7 @@ class User extends Component {
                         </ControlLabel>
                         <Select
                           name="userRole"
-                          value={roleId}
+                          value={removeUnderscore([roleId])}
                           onChange={this.setUserRole}
                           options={modifiedRoleOptions}
                           isSearchable={false}
