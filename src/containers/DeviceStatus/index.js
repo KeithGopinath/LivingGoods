@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 import Select from "react-select";
 import Button from '../../components/CustomButton';
-import { removeUnderscore } from '../../utils/containerFunctions';
+import { removeUnderscore, enforceUnderscore } from '../../utils/containerFunctions';
 
 const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
   const [status, setStatus] = useState({ value: mdmDeviceStatus, label: mdmDeviceStatus });
@@ -18,6 +18,10 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
   useEffect(() => {
     dispatch({ type: "DEVICE_STATUS_REQUEST" })
   }, []);
+
+  useEffect(() => {
+    setAlertMsg('')
+  }, [deviceStatus]);
 
   useEffect(() => {
     if (deviceStatusEdit) {
@@ -34,8 +38,9 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
   };
 
   const Handler = () => {
+    const modifiedStatus = enforceUnderscore([status])
     const Payload = {
-      mdmDeviceStatus: status.value,
+      mdmDeviceStatus: modifiedStatus[0].value,
       deviceId: deviceId
     }
     dispatch({ type: "DEVICE_STATUS_EDIT_REQUEST", payload: Payload })
@@ -59,7 +64,7 @@ const DeviceStatus = ({ mdmDeviceStatus, deviceId }) => {
         <Col md={6}>
           <Select
             className="device-status-select"
-            value={status}
+            value={removeUnderscore([status])}
             onChange={ChangeStatus}
             options={modifiedDeviceOptions}
             isSearchable={false}

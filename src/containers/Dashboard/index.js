@@ -225,7 +225,7 @@ const Dashboard = () => {
                 <StatsCard
                   bigIcon={<i className="pe-7s-phone text-success" />}
                   statsText="Active Devices"
-                  statsValue={count && count.activeDevices}
+                  statsValue={count && count.inUseDevices}
                 />
               </Col>
             </Row>

@@ -7,7 +7,7 @@ import moment from 'moment';
 import { DatePicker } from 'antd';
 import 'antd/dist/antd.css';
 
-const DeviceValidity = ({ deviceId }) => {
+const DeviceValidity = ({ deviceId, validUntilDate }) => {
   const [alertMsg, setAlertMsg] = useState('');
   const [newDate, setNewDate] = useState('');
 
@@ -48,6 +48,9 @@ const DeviceValidity = ({ deviceId }) => {
   // condition for alert class name success and failure
   const alertClassName = deviceValidity && deviceValidity.status == "OK" ? 'alertsuccess' : 'alertfalse';
 
+    // condition for default date
+  const newValidUntilDate = deviceValidity ? deviceValidity.validUntilDate : validUntilDate;
+
   return (
     <div >
       <Row className="device-status-container">
@@ -58,7 +61,7 @@ const DeviceValidity = ({ deviceId }) => {
             format="DD-MM-YYYY"
             disabledDate={disabledDate}
             onChange={onDateChange}
-          // defaultValue={moment(dateString, 'YYYY-MM-DD')}
+            defaultValue={moment(`${newValidUntilDate}`, 'DD-MM-YYYY')}
           />
         </Col>
         {newDate && <Col md={6} className="device-status-button" >
