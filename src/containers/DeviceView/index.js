@@ -129,7 +129,7 @@ class DeviceView extends Component {
     const { deviceInfo, applicationList } = devicesId;
 
     const deviceDetails = (Array.isArray(this.props.location.state) && this.props.location.state.length) ? enforceNull(this.props.location.state) : devicesId;
-    const { mdmDeviceStatus, id } = deviceDetails;
+    const { mdmDeviceStatus, id, validUntilDate } = deviceDetails;
     const deviceId = deviceDetails.id;
 
     // condition for checking disabled actions
@@ -236,7 +236,7 @@ class DeviceView extends Component {
                           <Row className="settings-page">
                             <Col md={12} className="settings-link-enc">
                                 <CustomTable deviceId={deviceId} deviceStatus={mdmDeviceStatus} applicationList={applicationList}
-                                info={deviceInfo} ViewDeviceTabs={ViewDeviceTabs} devicesIdLoading={devicesIdLoading} />
+                                info={deviceInfo} ViewDeviceTabs={ViewDeviceTabs} devicesIdLoading={devicesIdLoading} validUntilDate={validUntilDate} />
                             </Col>
                           </Row>
                         </Col>

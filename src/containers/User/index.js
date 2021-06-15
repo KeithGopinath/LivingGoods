@@ -14,6 +14,7 @@ import { getRolesRequest } from '../../actionCreators/Roles';
 import { alertMessage } from '../../utils/containerFunctions';
 import { getCountryRequest } from '../../actionCreators/Country';
 import { getBranchRequest } from '../../actionCreators/Branch';
+import { removeUnderscore } from '../../utils/containerFunctions';
 
 class User extends Component {
   constructor(props) {
@@ -50,10 +51,10 @@ class User extends Component {
       password: null,
       confirmPassword: null,
       uuid: state.uuid === '--' ? '' : state.uuid,
-      roleId: {
+      roleId: removeUnderscore([ {
         value: state.roles.id,
         label: state.roles.name,
-      },
+      }]),
       countryId: {
         value: state.country.id,
         label: state.country.countryName,
@@ -255,6 +256,8 @@ class User extends Component {
         value: data.id,
         label: `${data.name}`,
       }))
+
+    const modifiedRoleOptions = removeUnderscore(roleOptions)
     // country options
     const countryOptions = country && country.map((data) => ({
       value: data.id,
@@ -378,7 +381,7 @@ class User extends Component {
                           name="userRole"
                           value={roleId}
                           onChange={this.setUserRole}
-                          options={roleOptions}
+                          options={modifiedRoleOptions}
                           isSearchable={false}
                           className={roleId === '' && errorAlert}
                           maxLength={30}

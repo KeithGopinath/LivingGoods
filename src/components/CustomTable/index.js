@@ -11,7 +11,7 @@ import DeviceValidity from '../../containers/DeviceValidity';
 import Loader from '../Loader';
 import { removeUnderscore } from '../../utils/containerFunctions';
 
-const CustomTable = ({ info, ViewDeviceTabs, applicationList, deviceId, deviceStatus, devicesIdLoading }) => {
+const CustomTable = ({ info, ViewDeviceTabs, applicationList, deviceId, deviceStatus, devicesIdLoading, validUntilDate }) => {
   const applications = applicationList ? applicationList.applications : [];
   const login = useSelector((state) => state.loginState.login);
   // Modify applications list object
@@ -121,7 +121,7 @@ const CustomTable = ({ info, ViewDeviceTabs, applicationList, deviceId, deviceSt
               <AuditLog deviceId={deviceId} />
             </Tab.Pane>
             <Tab.Pane eventKey="DeviceValidity" mountOnEnter unmountOnExit >
-              <DeviceValidity deviceId={deviceId} />
+              <DeviceValidity deviceId={deviceId} validUntilDate={validUntilDate} />
             </Tab.Pane>
           </Tab.Content>
         </Col>

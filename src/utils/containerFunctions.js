@@ -60,3 +60,16 @@ export const removeUnderscore = (obj) => {
     }
     return obj
 }
+
+export const enforceUnderscore = (obj) => {
+    for (let x in obj) {
+        if (obj[x] instanceof Object) {
+            for (let y in obj[x]) {
+                if (typeof obj[x][y] === 'string') {
+                    obj[x][y] = obj[x][y].replace(/\ /g, '_' );
+                }
+            }
+        }
+    }
+    return obj
+}
