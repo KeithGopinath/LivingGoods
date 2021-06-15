@@ -177,7 +177,7 @@ class DeviceView extends Component {
                                     <td><Battery percent={deviceInfo && deviceInfo.Battery_Level} size={30} color={'white'} showPercentLabel
                                       labelPosition={'right'} labelColor={'white'} labelSize={'15px'} outlined /></td>
                                     <td><i className="icon fa fa-database fa" title="OS Version"></i>
-                                      <span>{deviceInfo && deviceInfo.Os_Version}</span></td>
+                                      <span>{deviceInfo && deviceInfo.OS_Version}</span></td>
                                     <td><i className="icon fa fa-usb fa" title="Available RAM Memory"></i>
                                       <span>{deviceInfo && deviceInfo.Available_RAM_Memory}</span></td>
                                     <td><i className="icon fa fa-microchip fa" title="Total RAM Memory"></i>

@@ -5,6 +5,7 @@ import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-boot
 import Button from '../../components/CustomButton';
 import { profileEditRequest } from '../../actionCreators/ProfileEdit';
 import Select from 'react-select';
+import { removeUnderscore } from '../../utils/containerFunctions';
 
 const Profile = ({ data }) => {
   const [firstName, setFirstName] = useState('');
@@ -133,6 +134,9 @@ const Profile = ({ data }) => {
     value: data.id,
     label: `${data.name}`,
   }))
+
+  const modifiedRoleOptions = removeUnderscore(roleOptions)
+
   // country options
   const countryOptions = country && country.map((data) => ({
     value: data.id,
@@ -223,9 +227,9 @@ const Profile = ({ data }) => {
               <Col md={9}>
                 <Select
                   name="userRole"
-                  value={roleId}
+                  value={removeUnderscore([roleId])}
                   onChange={Rolehandler}
-                  options={roleOptions}
+                  options={modifiedRoleOptions}
                   className={roleId === '' && errorAlert}
                   isDisabled={roleName == "ADMIN" ? true : false}
                   styles={customStyles}
