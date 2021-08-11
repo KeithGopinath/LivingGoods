@@ -55,7 +55,7 @@ export default {
   apiBaseUrl: {
     dev: 'http://52.1.227.183:8080/',
     prod: 'http://52.1.227.183:8080/',
-    test: 'http://54.225.242.42:8080/',
+    test: 'http://52.1.227.183:8080/',
   },
 };
 
